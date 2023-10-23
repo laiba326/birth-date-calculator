@@ -1,8 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
 
+import BirthDateCalculator from "./birthdate/BirthDateCalculator";
 function App() {
-  return <div></div>;
+  return (
+    <>
+      <BirthDateCalculator></BirthDateCalculator>
+    </>
+  );
 }
 
 export default App;
