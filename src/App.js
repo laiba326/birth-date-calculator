@@ -1,7 +1,16 @@
 import "./App.css";
+import { useSelector } from "react-redux";
 
+import BirthDateCalculator from "./birthdate/BirthDateCalculator";
 function App() {
-  return <div>React app</div>;
+  const birthDate = useSelector((state) => state.birthDate.birthDate);
+  console.log(birthDate);
+
+  return (
+    <>
+      <BirthDateCalculator />
+    </>
+  );
 }
 
 export default App;
