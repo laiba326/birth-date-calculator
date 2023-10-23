@@ -1,7 +1,12 @@
 import "./App.css";
 
+import BirthDateCalculator from "./birthdate/BirthDateCalculator";
 function App() {
-  return <div>React app</div>;
+  return (
+    <>
+      <BirthDateCalculator />
+    </>
+  );
 }
 
 export default App;
