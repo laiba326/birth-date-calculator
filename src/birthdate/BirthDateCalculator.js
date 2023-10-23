@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { DatePicker } from "antd";
+import { useDispatch } from "react-redux";
+import { addBirthDate } from "../redux/slice/birthDateSlice";
 
 const BirthDateCalculator = () => {
   const [birthDate, setBirthDate] = useState(null);
 
+  const dispatch = useDispatch();
+
   const onChange = (date, DatePicker) => {
-    setBirthDate(DatePicker);
+    dispatch(addBirthDate(DatePicker));
   };
 
   return (
