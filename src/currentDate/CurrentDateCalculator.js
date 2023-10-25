@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCurrentDate } from "../redux/slice/currentDateSlice";
 
 const CurrentDateCalculator = () => {
-  const [currentDate, setCurrentDate] = useState(null);
+  const birthDate = useSelector((state) => state.birthDate.birthDate);
+  const currentDate = useSelector((state) => state.currentDate.currentDate);
 
   const dispatch = useDispatch();
 
