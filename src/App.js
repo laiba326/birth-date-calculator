@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 import BirthDateCalculator from "./birthdate/BirthDateCalculator";
 import CurrentDateCalculator from "./currentDate/CurrentDateCalculator";
+import CalculateButton from "./calculateButton/CalculateButton";
 function App() {
   const birthDate = useSelector((state) => state.birthDate.birthDate);
   // console.log(birthDate);
@@ -11,8 +12,8 @@ function App() {
   return (
     <>
       <BirthDateCalculator />
-      <CurrentDateCalculator/>
-    
+      <CurrentDateCalculator />
+      <CalculateButton />
     </>
   );
 }
