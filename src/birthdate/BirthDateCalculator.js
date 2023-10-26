@@ -15,7 +15,9 @@ const BirthDateCalculator = () => {
   return (
     <>
       <DatePicker onChange={onChange} picker="date" />
+      <label>Add Birthdate</label>
       <h1>The birthdate is {birthDate}</h1>
+     
     </>
   );
 };
