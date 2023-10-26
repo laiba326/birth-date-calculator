@@ -1,58 +1,54 @@
 import React, { useState } from "react";
 import { Button } from "antd";
 import { useSelector } from "react-redux";
-import { differenceInMilliseconds } from "date-fns";
-import { differenceInSeconds } from "date-fns";
-import { differenceInMinutes } from "date-fns";
-import { differenceInHours } from "date-fns";
+import {
+  differenceInMilliseconds,
+  differenceInSeconds,
+  differenceInMinutes,
+  differenceInHours,
+} from "date-fns";
+
 export default function CalculateButton() {
   const [dif, setDif] = useState(null);
+  const [difInHours, setDifInHours] = useState(null);
+  const [difInMinutes, setDifInMinutes] = useState(null);
+  const [difInSeconds, setDifInSeconds] = useState(null);
 
   const birthDate = useSelector((state) => state.birthDate.birthDate);
   const currentDate = useSelector((state) => state.currentDate.currentDate);
 
-  const handleCalculateHours = () => {
-    const difInHours = differenceInHours(
+  const handleClick = () => {
+    const difInMillisecondsValue = differenceInMilliseconds(
       new Date(currentDate),
       new Date(birthDate)
     );
-    setDif(difInHours);
-  };
+    setDif(difInMillisecondsValue);
 
-  const handleCalculateMinutes = () => {
-    const difInMinutes = differenceInMinutes(
+    const difInSecondsValue = differenceInSeconds(
       new Date(currentDate),
       new Date(birthDate)
     );
-    setDif(difInMinutes);
-  };
+    setDifInSeconds(difInSecondsValue);
 
-  const handleCalculateSeconds = () => {
-    const difInSeconds = differenceInSeconds(
+    const difInHoursValue = differenceInHours(
       new Date(currentDate),
       new Date(birthDate)
     );
-    setDif(difInSeconds);
-  };
+    setDifInHours(difInHoursValue);
 
-  const handleCalculateMilliseconds = () => {
-    const difInSeconds = differenceInMilliseconds(
+    const difInMinutesValue = differenceInMinutes(
       new Date(currentDate),
       new Date(birthDate)
     );
-    setDif(difInSeconds);
-    console.log(difInSeconds, currentDate, birthDate);
+    setDifInMinutes(difInMinutesValue);
   };
-
   return (
     <>
-      <Button onClick={handleCalculateMilliseconds}>
-        Calculate Milliseconds{" "}
-      </Button>
-      <Button onClick={handleCalculateSeconds}>Calculate Seconds</Button>
-      <Button onClick={handleCalculateMinutes}>Calculate Minutes</Button>
-      <Button onClick={handleCalculateHours}>Calculate Hours</Button>
-      <h1>{dif}</h1>
+      <Button onClick={handleClick}>Calculate </Button>
+      <h2>Milliseconds:{dif}</h2>
+      <h2>Seconds:{difInSeconds}</h2>
+      <h2>Minutes:{difInMinutes}</h2>
+      <h2>Hours:{difInHours}</h2>
     </>
   );
 }
