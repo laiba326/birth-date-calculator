@@ -16,7 +16,7 @@ const CurrentDateCalculator = () => {
   return (
     <>
       <DatePicker onChange={onChange} picker="date" />
-      <h1>The current date is {currentDate}</h1>
+      <label>Current Date</label> <h1>The current date is {currentDate}</h1>
     </>
   );
 };

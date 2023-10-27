@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "antd";
 import { useSelector } from "react-redux";
 import {
@@ -13,11 +13,22 @@ export default function CalculateButton() {
   const [difInHours, setDifInHours] = useState(null);
   const [difInMinutes, setDifInMinutes] = useState(null);
   const [difInSeconds, setDifInSeconds] = useState(null);
+  const [isBothDatesSelected, setIsBothDatesSelected] = useState(null);
 
   const birthDate = useSelector((state) => state.birthDate.birthDate);
   const currentDate = useSelector((state) => state.currentDate.currentDate);
+  useEffect(() => {
+    if (birthDate && currentDate) {
+      setIsBothDatesSelected(true);
+    } else {
+      setIsBothDatesSelected(false);
+    }
+  }, [birthDate, currentDate]);
 
   const handleClick = () => {
+    if (!isBothDatesSelected) {
+      return;
+    }
     const difInMillisecondsValue = differenceInMilliseconds(
       new Date(currentDate),
       new Date(birthDate)
@@ -44,7 +55,11 @@ export default function CalculateButton() {
   };
   return (
     <>
-      <Button onClick={handleClick}>Calculate </Button>
+      {isBothDatesSelected ? (
+        <Button onClick={handleClick}>Calculate </Button>
+      ) : (
+        <h1 style={{ color: "blue" }}>Please Select Both Date</h1>
+      )}
       <h2>Milliseconds:{dif}</h2>
       <h2>Seconds:{difInSeconds}</h2>
       <h2>Minutes:{difInMinutes}</h2>
