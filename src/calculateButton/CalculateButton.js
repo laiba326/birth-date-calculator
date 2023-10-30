@@ -7,7 +7,6 @@ import {
   differenceInMinutes,
   differenceInHours,
 } from "date-fns";
-
 export default function CalculateButton() {
   const [dif, setDif] = useState(null);
   const [difInHours, setDifInHours] = useState(null);
@@ -53,6 +52,7 @@ export default function CalculateButton() {
     );
     setDifInMinutes(difInMinutesValue);
   };
+
   return (
     <>
       {isBothDatesSelected ? (
