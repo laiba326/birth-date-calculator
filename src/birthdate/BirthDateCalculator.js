@@ -23,6 +23,7 @@ const BirthDateCalculator = () => {
         onChange={onChange}
         picker="date"
         defaultValue={dayjs("2015/01/01")}
+        value={dayjs(birthDate ? birthDate : "2015/01/01")}
       />
       <Button onClick={handleTodayClick}>Today</Button>
       <h1> The birthdate is {birthDate}</h1>

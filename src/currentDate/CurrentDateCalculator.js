@@ -23,6 +23,7 @@ const CurrentDateCalculator = () => {
         onChange={onChange}
         picker="date"
         defaultValue={dayjs("2017/01/01")}
+        value={dayjs(currentDate ? currentDate : "2017/01/01")}
       />
       <Button onClick={handleTodayClick}>Today</Button>
       <h1> The current date is {currentDate}</h1>

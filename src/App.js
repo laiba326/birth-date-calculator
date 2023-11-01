@@ -1,15 +1,11 @@
 import "./App.css";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-
+import { Row, Col } from "antd";
 import BirthDateCalculator from "./birthdate/BirthDateCalculator";
 import CurrentDateCalculator from "./currentDate/CurrentDateCalculator";
 import CalculateButton from "./calculateButton/CalculateButton";
 function App() {
-  const birthDate = useSelector((state) => state.birthDate.birthDate);
-  // console.log(birthDate);
-  const currentDate = useSelector((state) => state.currentDate.currentDate);
-  // console.log(currentDate);
   const MainContainer = styled.main`
     background-color: aqua;
     margin-top: 20px;
@@ -18,6 +14,7 @@ function App() {
     border: solid;
     padding: 40px;
     border-radius: 10px;
+    max-width: 40%;
   `;
   const H1 = styled.h1`
     margin-left: 450px;
@@ -28,9 +25,22 @@ function App() {
     <>
       <H1>Age Calculator</H1>
       <MainContainer>
-        <BirthDateCalculator />
-        <CurrentDateCalculator />
-        <CalculateButton />
+        <Row justify="center" align="middle" style={{ minHeight: "50vh" }}>
+          <Col span={24}>
+            <h1 style={{ textAlign: "center" }}>Age Calculator</h1>
+            <Row justify="center">
+              <Col span={8}>
+                <BirthDateCalculator />
+              </Col>
+              <Col span={8}>
+                <CurrentDateCalculator />
+              </Col>
+              <Col span={24}>
+                <CalculateButton />
+              </Col>
+            </Row>
+          </Col>
+        </Row>
       </MainContainer>
     </>
   );
